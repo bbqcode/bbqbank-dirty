@@ -1,5 +1,68 @@
 ﻿@{
     ViewBag.Title = "bbqbank - Insert data";
 }
-
-<h2>Index</h2>
+<form action="form.php" method="post">
+<div data-role="fieldcontain">
+    <label for="date">
+        Bill name:</label>
+    <input type="text" name="BillName" id="BillName" placeholder="Bill name" />
+</div>
+<div data-role="fieldcontain">
+    <label for="date">
+        Date:</label><input type="date" name="date" id="date" value=""></div>
+<div data-role="fieldcontain">
+    <label for="select-choice-0" class="select">
+        Who paid:</label>
+    <select name="select-choice-0" id="select-choice-0">
+        <option value="standard">Martin</option>
+        <option value="rush">Alexis</option>
+        <option value="express">Aude</option>
+    </select>
+</div>
+<div data-role="fieldcontain">
+    <label for="SubTotal">
+        Subtotal:</label>
+    <input type="text" name="SubTotal" id="SubTotal" placeholder="Subtotal" />
+</div>
+<div data-role="fieldcontain">
+    <label for="Total">
+        Total:</label>
+    <input type="text" name="Total" id="Total" placeholder="Total" />
+</div>
+<div data-role="fieldcontain">
+    <label for="date">
+        Metro Points:</label>
+    <input type="text" name="MetroPoints" id="MetroPoints" placeholder="Metro Points" />
+</div>
+<hr />
+<div data-role="fieldcontain">
+    <label for="ItemName">
+        Item name:</label>
+    <input type="text" name="ItemName" id="ItemName" placeholder="Item name" />
+</div>
+<div data-role="fieldcontain">
+    <label for="ItemPrice">
+        Price:</label>
+    <input type="text" name="ItemPrice" id="ItemPrice" placeholder="Price" />
+</div>
+<div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+        <legend>Who is paying for this:</legend>
+        <div>
+            <input type="checkbox" name="ShouldMartinPay" id="ShouldMartinPay"><label for="ShouldMartinPay">Martin</label></div>
+        <div>
+            <input type="checkbox" name="ShouldAlexisPay" id="ShouldAlexisPay"><label for="ShouldAlexisPay">Alexis</label></div>
+        <div>
+            <input type="checkbox" name="ShouldAudePay" id="ShouldAudePay"><label for="ShouldAudePay">Aude</label></div>
+    </fieldset>
+</div>
+<div data-role="fieldcontain">
+    <fieldset data-role="controlgroup">
+        <legend>Taxes:</legend>
+        <div>
+            <input type="checkbox" name="HasGST" id="HasGST"><label for="HasGST">GST</label></div>
+        <div>
+            <input type="checkbox" name="HasPST" id="HasPST"><label for="HasPST">PST</label></div>
+    </fieldset>
+</div>
+</form>

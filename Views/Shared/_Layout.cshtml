@@ -7,20 +7,24 @@
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
 </head>
-<body>
-    <!-- Home -->
-    <div data-role="page" id="page1">
-        <div data-theme="a" data-role="header">
-            <h3>
-                bbqbank
-            </h3>
+<body class="ui-mobile-viewport ui-overlay-c">
+    <div data-role="page" data-url="/demos/1.1.1/docs/pages/page-template.html" tabindex="0"
+        class="ui-page ui-body-c ui-page-active" style="min-height: 456px;">
+        <div data-role="header" class="ui-header ui-bar-a" role="banner">
+            <h1 class="ui-title" role="heading" aria-level="1">
+                bbqbank</h1>
         </div>
-        <div data-role="content" style="padding: 15px">
+        <!-- /header -->
+        <div data-role="content" class="ui-content" role="main">
             @RenderBody()
         </div>
+        <!-- /content -->
     </div>
-    <script>
-        //App custom javascript
-        </script>
+    <!-- /page -->
+    <div class="ui-loader ui-corner-all ui-body-a ui-loader-default">
+        <span class="ui-icon ui-icon-loading"></span>
+        <h1>
+            loading</h1>
+    </div>
 </body>
 </html>
