@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bbqbank-dirty", "bbqbank-dirty\bbqbank-dirty.csproj", "{B825B261-DA4E-43CB-8D56-5AFEF2D702D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bbqbank-dirty", "bbqbank-dirty.csproj", "{B825B261-DA4E-43CB-8D56-5AFEF2D702D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

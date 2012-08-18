@@ -7,4 +7,6 @@ TestResults
 
 *.user
 *.suo
-packages/
+packages
+
+_ReSharper.bbqbank-dirty
