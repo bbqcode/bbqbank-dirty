@@ -3,9 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
 </head>
-
 <body>
-    @RenderBody()
+    <!-- Home -->
+    <div data-role="page" id="page1">
+        <div data-theme="a" data-role="header">
+            <h3>
+                bbqbank
+            </h3>
+        </div>
+        <div data-role="content" style="padding: 15px">
+            @RenderBody()
+        </div>
+    </div>
+    <script>
+        //App custom javascript
+        </script>
 </body>
 </html>
