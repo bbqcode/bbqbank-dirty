@@ -1,18 +1,110 @@
 ﻿@model bbqbank.Models.Bill
-
 @{
-    Layout = null;
+    ViewBag.Title = "bbqbank - Edit bill";
 }
 
-<!DOCTYPE html>
+<section>
+    @using (Html.BeginForm("Edit", "Bill"))
+    {
+        <section>
+            <div class="page-header">
+                <h1>Bill</h1>
+            </div>
+            <div class="form-horizontal">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Name</label>
+                        <div class="controls">
+                            @Html.EditorFor(m => Model.Name)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="Date">Date</label>
+                        <div class="controls">
+                            <input type="date" id="Date" name="Date" value="@DateTime.Now"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="WhoPaid">WhoPaid</label>
+                        <div class="controls">
+                            <select id="WhoPaid">
+                                <option value="1">Alexis</option>
+                                <option value="2">Martin</option>
+                                <option value="3">Aude</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="SubTotal">SubTotal</label>
+                        <div class="controls">
+                            @Html.EditorFor(m => Model.SubTotal)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="Total">Total</label>
+                        <div class="controls">
+                            @Html.EditorFor(m => Model.Total)
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </section>
+        
+        <section>
+            <div class="page-header">
+                <h1>Items <a id="addItem" class="btn btn-primary" href="#">Add</a></h1>
+            </div>
+            <table id="tableItems" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Has taxes</th>
+                        <th>Used</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </section>
+        
+        <section>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <button class="btn">Cancel</button>
+            </div>
+        </section>
+    }
+</section>
 
-<html>
-    <head>
-        <title>title</title>
-    </head>
-    <body>
-        <div>
-              
-        </div>
-    </body>
-</html>
+<table style="display: none">
+    <tbody id="template">
+    <tr>
+        <td>@Html.TextBoxFor(m => Model.Items[0].Name, new { @class = "input-small"})</td>
+        <td>
+            <select id="Model.Items[0].CategoryId" name="Model.Items[0].CategoryId" class="input-small">
+                <option value="1">Something</option>
+                <option value="2">Something1</option>
+                <option value="3">Something2</option>
+            </select>
+        </td>
+        <td>@Html.TextBoxFor(m => Model.Items[0].Price, new { @class = "input-small" })</td>
+        <td><input type="checkbox" id="Model.Items[0].HasTaxes" name="Model.Items[0].HasTaxes"></td>
+        <td>
+            <label class="checkbox inline">
+                <input type="checkbox" id="Model.Items[0].HasAlexisUsed" name="Model.Items[0].HasAlexisUsed">Alexis
+            </label>
+            <label class="checkbox inline">
+                <input type="checkbox" id="Model.Items[0].HasMartinUsed" name="Model.Items[0].HasMartinUsed">Martin
+            </label>
+            <label class="checkbox inline">
+                <input type="checkbox" id="Model.Items[0].HasAudeUsed" name="Model.Items[0].HasMartinUsed">Aude
+            </label>
+        </td>
+        <td><a class="btn btn-danger deleteRow" href="#">Delete</a></td>
+    </tr>
+    </tbody>
+</table>

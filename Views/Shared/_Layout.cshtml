@@ -3,28 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet">
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.8.0.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    
+    <script type="text/javascript" src="@Url.Content("~/Scripts/core.js")"></script>
 </head>
-<body class="ui-mobile-viewport ui-overlay-c">
-    <div data-role="page" data-url="/demos/1.1.1/docs/pages/page-template.html" tabindex="0"
-        class="ui-page ui-body-c ui-page-active" style="min-height: 456px;">
-        <div data-role="header" class="ui-header ui-bar-a" role="banner">
-            <h1 class="ui-title" role="heading" aria-level="1">
-                bbqbank</h1>
+<body style="padding-top: 60px;">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">bbqbank dirty</a>
+                <ul class="nav">
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("Index","Bill")">Bills</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- /header -->
-        <div data-role="content" class="ui-content" role="main">
-            @RenderBody()
-        </div>
-        <!-- /content -->
     </div>
-    <!-- /page -->
-    <div class="ui-loader ui-corner-all ui-body-a ui-loader-default">
-        <span class="ui-icon ui-icon-loading"></span>
-        <h1>
-            loading</h1>
+    <div class="container">
+        @RenderBody()
     </div>
 </body>
 </html>

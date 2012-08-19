@@ -1,8 +1,37 @@
-﻿@model dynamic
+﻿@model List<bbqbank.Models.Bill>
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Bills";
 }
 
-<h2>title</h2>
+<section>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Total</td>
+                <td>Who paid</td>
+                <td>Date</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var row in Model)
+            {
+                <tr>
+                    <td>@row.Name</td>
+                    <td>@row.Total</td>
+                    <td>@row.WhoPaidName()</td>
+                    <td>@row.Date.ToShortDateString()</td>
+                    <td>
+                        @using(Html.BeginForm("Delete", "Bill"))
+                        {
+                            <input type="hidden" name="Id" value="@row.Id"/>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

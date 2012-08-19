@@ -19,7 +19,8 @@ namespace bbqbank.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var model = _context.Bills.ToList();
+            return View(model);
         }
 
         public ActionResult Create()
@@ -32,39 +33,7 @@ namespace bbqbank.Controllers
         {
             _context.Bills.Add(model);
             _context.SaveChanges();
-            return RedirectToAction("Edit", "Bill");
-        }
-
-        public ActionResult Edit(int id)
-        {
-            var bill = _context.Bills.Include(b => b.Items).SingleOrDefault(b => b.Id == id);
-            if(bill == null)
-                return RedirectToAction("Index", "Bill");
-
-            return View(bill);
-        }
-        
-        [HttpPost]
-        public ActionResult Edit(Bill model)
-        {
-            var bill = _context.Bills.Single(b => b.Id == model.Id);
-
-            bill.Date = model.Date;
-            bill.MetroPoints = model.MetroPoints;
-            bill.Name = model.Name;
-            bill.SubTotal = model.SubTotal;
-            bill.Total = model.Total;
-            bill.WhoPaid = model.WhoPaid;
-
-            foreach (var item in bill.Items)
-            {
-                bill.Items.Remove(item);
-            }
-            bill.Items = model.Items;
-
-            _context.SaveChanges();
-
-            return View(bill);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -73,6 +42,7 @@ namespace bbqbank.Controllers
             var bill = _context.Bills.Single(b => b.Id == id);
             _context.Bills.Remove(bill);
             _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

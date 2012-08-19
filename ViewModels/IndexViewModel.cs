@@ -7,8 +7,13 @@ namespace bbqbank.ViewModels
 {
     public class IndexViewModel
     {
-        public decimal AlexisTotal { get; set; }
-        public decimal MartinTotal { get; set; }
-        public decimal AudeTotal { get; set; }
+        public decimal AlexisTotalPaid { get; set; }
+        public decimal AlexisTotalUsed { get; set; }
+
+        public decimal AudeTotalPaid { get; set; }
+        public decimal AudeTotalUsed { get; set; }
+
+        public decimal MartinTotalUsed { get; set; }
+        public decimal MartinTotalPaid { get; set; }
     }
 }

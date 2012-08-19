@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using bbqbank.Helper;
 using bbqbank.Models;
 using bbqbank.ViewModels;
 
@@ -20,20 +19,62 @@ namespace bbqbank.Controllers
 
         public ActionResult Index()
         {
-            var bills = _context.Bills.Include(b => b.Items).ToList();
-
-            var alexisPaid = bills.Where(b => b.WhoPaid == Roommate.Alexis).Sum(b => b.Total);
-/*
-            decimal total;
-            foreach(var items in bills.Where(b => b.Items.))
-
-            var alexisUsed = bills.Sum(b => b.Items.Where(i => i.HasAlexisUsed))*/
             var viewModel = new IndexViewModel
-                                           {
-                                               
-                                           };
-
+                                {
+                                    AlexisTotalPaid = TotalPaid(Roommate.Alexis),
+                                    AlexisTotalUsed = TotalUsed(Roommate.Alexis),
+                                    MartinTotalPaid = TotalPaid(Roommate.Martin),
+                                    MartinTotalUsed = TotalUsed(Roommate.Martin),
+                                    AudeTotalPaid = TotalPaid(Roommate.Aude),
+                                    AudeTotalUsed = TotalUsed(Roommate.Aude)
+                                };
             return View(viewModel);
+        }
+
+        private decimal TotalPaid(Roommate roommate)
+        {
+            var query = _context.Bills.WhoPaid(roommate);
+
+            return query.Any() ? query.Sum(b => b.Total) : 0;
+        }
+
+        private decimal TotalUsed(Roommate roommate)
+        {
+            var items = FindItems(roommate);
+
+            decimal total = 0;
+            foreach (Item item in items)
+            {
+                if (item.HasTaxes)
+                {
+                    total += (item.Price*item.Bill.Total)/item.Bill.SubTotal;
+                }
+                else
+                {
+                    total += item.Price;
+                }
+            }
+            return total;
+        }
+
+        private IEnumerable<Item> FindItems(Roommate roommate)
+        {
+            List<Item> items;
+            switch (roommate)
+            {
+                case Roommate.Alexis:
+                    items = _context.Items.Where(i => i.HasAlexisUsed).ToList();
+                    break;
+                case Roommate.Martin:
+                    items = _context.Items.Where(i => i.HasAlexisUsed).ToList();
+                    break;
+                case Roommate.Aude:
+                    items = _context.Items.Where(i => i.HasAlexisUsed).ToList();
+                    break;
+                default:
+                    throw new ArgumentException("Invalid roommate");
+            }
+            return items;
         }
     }
 }
