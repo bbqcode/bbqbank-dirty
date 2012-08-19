@@ -87,6 +87,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\BillExtensions.cs" />
+    <Compile Include="Helper\DecimalExtentions.cs" />
     <Compile Include="Migrations\201208191850297_Initial.cs" />
     <Compile Include="Migrations\201208191850297_Initial.Designer.cs">
       <DependentUpon>201208191850297_Initial.cs</DependentUpon>

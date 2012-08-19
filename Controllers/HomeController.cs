@@ -28,6 +28,9 @@ namespace bbqbank.Controllers
                                     AudeTotalPaid = TotalPaid(Roommate.Aude),
                                     AudeTotalUsed = TotalUsed(Roommate.Aude)
                                 };
+            viewModel.AlexisDiff = viewModel.AlexisTotalPaid - viewModel.AlexisTotalUsed;
+            viewModel.MartinDiff = viewModel.MartinTotalPaid - viewModel.MartinTotalUsed;
+            viewModel.AudeDiff = viewModel.AudeTotalPaid - viewModel.AudeTotalUsed;
             return View(viewModel);
         }
 
@@ -45,14 +48,8 @@ namespace bbqbank.Controllers
             decimal total = 0;
             foreach (Item item in items)
             {
-                if (item.HasTaxes)
-                {
-                    total += (item.Price*item.Bill.Total)/item.Bill.SubTotal;
-                }
-                else
-                {
-                    total += item.Price;
-                }
+                decimal price = (item.HasTaxes) ? (item.Price*item.Bill.Total)/item.Bill.SubTotal : item.Price;
+                total += price / HowManyUsed(item);
             }
             return total;
         }
@@ -75,6 +72,19 @@ namespace bbqbank.Controllers
                     throw new ArgumentException("Invalid roommate");
             }
             return items;
+        }
+
+        private int HowManyUsed(Item item)
+        {
+            var count = 0;
+            if (item.HasAlexisUsed)
+                count += 1;
+            if (item.HasAudeUsed)
+                count += 1;
+            if (item.HasMartinUsed)
+                count += 1;
+
+            return count;
         }
     }
 }

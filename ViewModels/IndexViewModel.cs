@@ -9,11 +9,15 @@ namespace bbqbank.ViewModels
     {
         public decimal AlexisTotalPaid { get; set; }
         public decimal AlexisTotalUsed { get; set; }
+        public decimal AlexisDiff { get; set; }
 
         public decimal AudeTotalPaid { get; set; }
         public decimal AudeTotalUsed { get; set; }
+        public decimal AudeDiff { get; set; }
 
         public decimal MartinTotalUsed { get; set; }
         public decimal MartinTotalPaid { get; set; }
+        public decimal MartinDiff { get; set; }
+
     }
 }

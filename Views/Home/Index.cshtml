@@ -1,4 +1,5 @@
-﻿@model bbqbank.ViewModels.IndexViewModel
+﻿@using bbqbank.Helper
+@model bbqbank.ViewModels.IndexViewModel
 @{
     ViewBag.Title = "bbqbank - Insert data";
 }
@@ -9,23 +10,27 @@
             <th></th> 
             <th>Paid</th>
             <th>Used</th>
+            <th>Diff</th>
         </tr>
     </thead>
     <tbody>
     <tr>
         <td>Alexis</td>
-        <td>@Model.AlexisTotalPaid</td>
-        <td>@Model.AlexisTotalUsed</td>
+        <td>@Model.AlexisTotalPaid.ToMoney()</td>
+        <td>@Model.AlexisTotalUsed.ToMoney()</td>
+        <td>@Model.AlexisDiff.ToMoney()</td>
     </tr>
     <tr>
         <td>Aude</td>
-        <td>@Model.AudeTotalPaid</td>
-        <td>@Model.AudeTotalUsed</td>
+        <td>@Model.AudeTotalPaid.ToMoney()</td>
+        <td>@Model.AudeTotalUsed.ToMoney()</td>
+        <td>@Model.AudeDiff.ToMoney()</td>
     </tr>
     <tr>
         <td>Martin</td>
-        <td>@Model.MartinTotalPaid</td>
-        <td>@Model.MartinTotalUsed</td>
+        <td>@Model.MartinTotalPaid.ToMoney()</td>
+        <td>@Model.MartinTotalUsed.ToMoney()</td>
+        <td>@Model.MartinDiff.ToMoney()</td>
     </tr>
     </tbody>
 </table>
