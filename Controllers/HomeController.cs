@@ -66,10 +66,10 @@ namespace bbqbank.Controllers
                     items = _context.Items.Where(i => i.HasAlexisUsed).ToList();
                     break;
                 case Roommate.Martin:
-                    items = _context.Items.Where(i => i.HasAlexisUsed).ToList();
+                    items = _context.Items.Where(i => i.HasMartinUsed).ToList();
                     break;
                 case Roommate.Aude:
-                    items = _context.Items.Where(i => i.HasAlexisUsed).ToList();
+                    items = _context.Items.Where(i => i.HasAudeUsed).ToList();
                     break;
                 default:
                     throw new ArgumentException("Invalid roommate");
