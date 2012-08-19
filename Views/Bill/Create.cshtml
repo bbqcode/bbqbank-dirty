@@ -20,7 +20,7 @@
                 <div class="control-group">
                     <label class="control-label" for="Date">Date</label>
                     <div class="controls">
-                        <input type="date" id="Date" name="Date" value="@DateTime.Now"/>
+                        <input type="date" id="Date" name="Date"/>
                     </div>
                 </div>
                 <div class="control-group">
@@ -80,29 +80,29 @@
 
 <table style="display: none">
     <tbody id="template">
-    <tr>
-        <td>@Html.TextBoxFor(m => Model.Items[0].Name, new { @class = "input-small"})</td>
-        <td>
-            <select id="Model.Items[0].CategoryId" name="Model.Items[0].CategoryId" class="input-small">
-                <option value="1">Something</option>
-                <option value="2">Something1</option>
-                <option value="3">Something2</option>
-            </select>
-        </td>
-        <td>@Html.TextBoxFor(m => Model.Items[0].Price, new { @class = "input-small" })</td>
-        <td><input type="checkbox" id="Model.Items[0].HasTaxes" name="Model.Items[0].HasTaxes"></td>
-        <td>
-            <label class="checkbox inline">
-                <input type="checkbox" id="Model.Items[0].HasAlexisUsed" name="Model.Items[0].HasAlexisUsed">Alexis
-            </label>
-            <label class="checkbox inline">
-                <input type="checkbox" id="Model.Items[0].HasMartinUsed" name="Model.Items[0].HasMartinUsed">Martin
-            </label>
-            <label class="checkbox inline">
-                <input type="checkbox" id="Model.Items[0].HasAudeUsed" name="Model.Items[0].HasMartinUsed">Aude
-            </label>
-        </td>
-        <td><a class="btn btn-danger deleteRow" href="#">Delete</a></td>
-    </tr>
+        <tr>
+            <td><input type="text" name="Items[0].Name" class="input-small"/></td>
+            <td>
+                <select name="Items[0].CategoryId" class="input-small">
+                    <option value="1">Something</option>
+                    <option value="2">Something1</option>
+                    <option value="3">Something2</option>
+                </select>
+            </td>
+            <td><input type="text" name="Items[0].Price" class="input-small"/></td>
+            <td><input type="checkbox" name="Items[0].HasTaxes"></td>
+            <td>
+                <label class="checkbox inline">
+                    <input type="checkbox" name="Items[0].HasAlexisUsed" checked="checked" value="true">Alexis
+                </label>
+                <label class="checkbox inline">
+                    <input type="checkbox" name="Items[0].HasMartinUsed" checked="checked" value="true">Martin
+                </label>
+                <label class="checkbox inline">
+                    <input type="checkbox" name="Items[0].HasMartinUsed" checked="checked"  value="true">Aude
+                </label>
+            </td>
+            <td><a class="btn btn-danger deleteRow" href="#">Delete</a></td>
+        </tr>
     </tbody>
 </table>
